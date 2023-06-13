@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package api;
+
+service NoteService {
+	rpc CreateNote(CreateNoteRequest) returns (CreateNoteResponse) {}
+	rpc ReadNote(ReadNoteRequest) returns (ReadNoteResponse) {}
+	rpc UpdateNote(UpdateNoteRequest) returns (UpdateNoteResponse) {}
+	rpc DeleteNote(DeleteNoteRequest) returns (DeleteNoteResponse) {}
+}
+
+message CreateNoteRequest {
+	// Поля запроса для создания заметки
+	string title = 1;
+	string content = 2;
+}
+
+message CreateNoteResponse {
+	// Поля ответа на запрос создания заметки
+	int32 note_id = 1;
+}
+
+message ReadNoteRequest {
+	// Поля запроса для чтения заметки
+	int32 note_id = 1;
+}
+
+message ReadNoteResponse {
+	// Поля ответа на запрос чтения заметки
+	string title = 1;
+	string content = 2;
+}
+
+message UpdateNoteRequest {
+	// Поля запроса для обновления заметки
+	int32 note_id = 1;
+	string title = 2;
+	string content = 3;
+}
+
+message UpdateNoteResponse {
+	// Поля ответа на запрос обновления заметки
+    int32 note_id = 1;
+    string title = 2;
+    string content = 3;
+}
+
+message DeleteNoteRequest {
+	// Поля запроса для удаления заметки
+	int32 note_id = 1;
+}
+
+message DeleteNoteResponse {
+	// Поля ответа на запрос удаления заметки
+    bool success = 1;
+}
